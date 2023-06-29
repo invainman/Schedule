@@ -43,3 +43,43 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+
+        - createTable:
+            tableName: event
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: varchar(255)
+              - column:
+                  name: end_date
+                  type: varchar(255)
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: event
+            constraintName: event_system_user
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: system_user

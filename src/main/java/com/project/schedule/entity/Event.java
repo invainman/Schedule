@@ -1,24 +1,34 @@
 package com.project.schedule.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "white_list")
+@Table(name = "event")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WhiteList {
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    String email;
+    String title;
 
-    public WhiteList(String email) {
-        this.email = email;
-    }
+    String description;
+
+    Date startDate;
+
+    Date endDate;
+
+    Long userId;
+
 }
