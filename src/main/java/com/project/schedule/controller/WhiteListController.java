@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/whitelist")
 public class WhiteListController {
@@ -20,5 +22,16 @@ public class WhiteListController {
     @PostMapping
     public ResponseEntity<WhiteList> addEmailToWhiteList(@RequestBody WhiteListDto whiteListDto) {
         return new ResponseEntity<>(whiteListService.addEmail(whiteListDto), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<WhiteList>> getAll() {
+        return new ResponseEntity<>(whiteListService.getAll(), HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteByEmail(@RequestBody String email) {
+        whiteListService.deleteByEmail(email);
+        return ResponseEntity.noContent().build();
     }
 }
