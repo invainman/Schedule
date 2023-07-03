@@ -1,5 +1,6 @@
 package com.project.schedule.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,8 +26,10 @@ public class Event {
 
     String description;
 
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
     Date startDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
     Date endDate;
 
     Long userId;
