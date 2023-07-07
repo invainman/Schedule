@@ -7,6 +7,7 @@ import com.project.schedule.repository.EventRepository;
 import com.project.schedule.repository.UserRepository;
 import com.project.schedule.repository.WhiteListRepository;
 import com.project.schedule.service.WhiteListService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class WhiteListServiceImpl implements WhiteListService {
 
     @Override
     public void deleteByEmail(String email) {
-        User user = userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(String.format("User with email %s not found", email)));
         eventRepository.deleteAllByUserId(user.getId());
         userRepository.deleteByEmail(email);
         whiteListRepository.deleteByEmail(email);
