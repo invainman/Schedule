@@ -5,10 +5,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface WhiteListRepository extends JpaRepository<WhiteList, Long> {
 
-    WhiteList findByEmail(String email);
+    Optional<WhiteList> findByEmail(String email);
 
     @Transactional
     void deleteByEmail(String email);

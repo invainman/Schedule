@@ -1,9 +1,8 @@
 package com.project.schedule.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Data
 public class EventDto {
@@ -12,11 +11,9 @@ public class EventDto {
 
     private String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
-    private Date startDate;
+    private OffsetDateTime startDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
-    private Date endDate;
+    private OffsetDateTime endDate;
 
     private Long userId;
 }

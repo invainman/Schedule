@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,11 +27,9 @@ public class Event {
 
     String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
-    Date startDate;
+    OffsetDateTime startDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm", timezone = "Europe/London")
-    Date endDate;
+    OffsetDateTime endDate;
 
     Long userId;
 

@@ -66,10 +66,10 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: start_date
-                  type: varchar(255)
+                  type: TIMESTAMP
               - column:
                   name: end_date
-                  type: varchar(255)
+                  type: TIMESTAMP
               - column:
                   name: user_id
                   type: BIGINT

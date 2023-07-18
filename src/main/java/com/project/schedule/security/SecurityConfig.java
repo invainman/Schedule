@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    private static final String[] UN_SECURED_URLs = {
+    private static final String[] UNSECURED_URLs = {
             "/users/registration",
             "/users/authenticate"
     };
@@ -53,7 +53,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(UN_SECURED_URLs).permitAll()
+                .requestMatchers(UNSECURED_URLs).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

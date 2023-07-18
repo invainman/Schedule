@@ -2,6 +2,7 @@ package com.project.schedule.controller;
 
 import com.project.schedule.dto.UserDto;
 import com.project.schedule.entity.User;
+import com.project.schedule.jwt.JwtAnswer;
 import com.project.schedule.jwt.JwtLoginRequest;
 import com.project.schedule.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<String> getTokenForLogin(@RequestBody JwtLoginRequest loginRequest) {
+    public ResponseEntity<JwtAnswer> getTokenForLogin(@RequestBody JwtLoginRequest loginRequest) {
         return new ResponseEntity<>(userService.getTokenForLogin(loginRequest), HttpStatus.OK);
     }
 
